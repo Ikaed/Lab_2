@@ -6,10 +6,10 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        var restart = false;
+        var restartGame = false;
         do
         {
-            restart = false;
+            restartGame = false;
             var inputDot = "";
             var stringInput = "";
             Console.WriteLine("Mata in punkten (X,Y)");
@@ -134,9 +134,9 @@ internal class Program
             }
             catch (Exception e)
             {
-                Console.WriteLine("Du matade inte in rätt värden. Var god försök igen.");
-                restart = true;
+                Console.WriteLine("Du matade in felaktiga värden. Var god försök igen.");
+                restartGame = true;
             }
-        } while (restart);
+        } while (restartGame);
     }
 }

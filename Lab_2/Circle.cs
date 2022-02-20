@@ -1,51 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Lab_2;
 
-namespace Lab_2
+public class Circle
 {
-    public class Circle
+    public double area;
+    public int length;
+    public int points;
+    public double rad;
+    public int x;
+    public int y;
+
+    public Circle(int x, int y, int length, int points)
     {
-        public int x;
-        public int y;
-        public int length;
-        public int points;
-        public double rad;
-        public double area;
+        this.x = x;
+        this.y = y;
+        this.length = length;
+        this.points = points;
+        rad = this.length / (Math.PI * 2);
+        area = this.length * this.length / (Math.PI * 4);
+    }
 
-        public Circle(int x, int y, int length, int points)
-        {
-            this.x = x;
-            this.y = y;
-            this.length = length;
-            this.points = points;
-            this.rad = this.length / (Math.PI * 2);
-            this.area = (this.length * this.length) / (Math.PI * 4);
-        }
+    public bool Hit(int dotX, int dotY)
+    {
+        if ((dotY - x) * (dotX - x) +
+            (dotY - y) * (dotY - y) <= rad * rad)
+            return true;
 
-        public bool Hit(int dotX, int dotY)
-        {
+        return false;
+    }
 
-            if ((dotY - this.x) * (dotX - this.x) +
-                (dotY - this.y) * (dotY - this.y) <= this.rad * this.rad)
-                return true;
+    public double shapeScore()
+    {
+        var equationCircle = getShapeType() * points / area;
+        return equationCircle;
+    }
 
-            else
-                return false;
-        }
-
-        public double shapeScore()
-        {
-
-            double equationCircle = this.getShapeType() * this.points / this.area;
-            return equationCircle;
-        }
-
-        public int getShapeType()
-        {
-            return 2;
-        }
+    public int getShapeType()
+    {
+        return 2;
     }
 }

@@ -1,56 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Lab_2;
 
-namespace Lab_2
+public class Square
 {
-    public class Square
+    public int area;
+    public int botX;
+    public int botY;
+    public int length;
+    public int points;
+    public int topX;
+    public int topY;
+    public int x;
+    public int y;
+
+
+    public Square(int indexX, int indexY, int indexLength, int indexPoints)
     {
-        public int x;
-        public int y;
-        public int length;
-        public int points;
-        public int area;
-        public int botX;
-        public int botY;
-        public int topX;
-        public int topY;
+        x = indexX;
+        y = indexY;
+        length = indexLength;
+        points = indexPoints;
+        area = length / 4 * (length / 4);
+        botX = x - length / 2;
+        botY = y - length / 2;
+        topX = x + length / 2;
+        topY = y + length / 2;
+    }
 
+    public bool Hit(int dotX, int dotY)
+    {
+        if (dotX > botX && dotX < topX &&
+            dotY > botY && dotY < topY)
+            return true;
 
-        public Square(int indexX, int indexY, int indexLength, int indexPoints)
-        {
-            this.x = indexX;
-            this.y = indexY;
-            this.length = indexLength;
-            this.points = indexPoints;
-            this.area = (this.length / 4) * (this.length / 4);
-            this.botX = this.x - (this.length / 2);
-            this.botY = this.y - (this.length / 2);
-            this.topX = this.x + (this.length / 2);
-            this.topY = this.y + (this.length / 2);
-        }
-        //int botX, int botY, int topX, int topY,
-        public bool Hit(int dotX, int dotY)
-        {
-            if (dotX > this.botX && dotX < this.topX &&
-                dotY > this.botY && dotY < this.topY)
-                return true;
+        return false;
+    }
 
-            else
+    public double shapeScore()
+    {
+        double equationSquare = getShapeType() * points / area;
+        return equationSquare;
+    }
 
-                return false;
-        }
-        public double shapeScore()
-        {
-            double equationSquare = this.getShapeType() * this.points / this.area;
-            return equationSquare;
-        }
-        public int getShapeType()
-        {
-            return 1;
-        }
+    public int getShapeType()
+    {
+        return 1;
     }
 }
-

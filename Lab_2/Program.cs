@@ -6,7 +6,6 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-  
         var values = new List<string[]>();
         var shapeCircle = new List<Circle>();
         var shapeSquare = new List<Square>();
@@ -24,13 +23,13 @@ internal class Program
         do
         {
             restartGame = false;
-          
+
             Console.WriteLine("Mata in punkten (X,Y)");
             do
             {
                 inputDot = Console.ReadLine();
             } while (string.IsNullOrWhiteSpace(inputDot));
-            //X,shape, Y,POINTS, LENGTH; 3, CIRCLE, 1,100, 13; 1, CIRCLE, -1,200, 15; -1 ,square, 0 ,300, 20 ;  -3, SQUARE ,2 ,400, 8;
+
             Console.WriteLine("Mata in värdena");
 
             do
@@ -47,25 +46,21 @@ internal class Program
                 var headerVariables = Regex.Split(substringHeader, @",|;");
                 var listVariables = Regex.Split(concatString, @";");
                 var inputDotX = Convert.ToInt32(dotValue[0]);
-                var inputDotY = Convert.ToInt32(dotValue[1]);           
-              
+                var inputDotY = Convert.ToInt32(dotValue[1]);
+
                 // Find index position for headers
                 var indexShape = Array.FindIndex(headerVariables, row => row.Contains("SHAPE"));
                 var indexX = Array.FindIndex(headerVariables, row => row.Contains("X"));
                 var indexY = Array.FindIndex(headerVariables, row => row.Contains("Y"));
                 var indexPoints = Array.FindIndex(headerVariables, row => row.Contains("POINTS"));
                 var indexLength = Array.FindIndex(headerVariables, row => row.Contains("LENGTH"));
-             
+
                 for (var i = 1; i <= listVariables.Length - 1; i++)
                 {
                     var seperateValues = Regex.Split(listVariables[i], @",");
                     values.Add(seperateValues);
                 }
-                foreach (var item in values)
-                {
-                    Console.WriteLine(item + "testc");
-                }
-              
+
                 // Remove last array
                 values.RemoveAt(values.Count - 1);
 
